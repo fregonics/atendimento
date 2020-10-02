@@ -8,15 +8,28 @@ import javax.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Cliente a ser atendido
+ */
 @Data
 @NoArgsConstructor
 @Entity
 public class Cliente {
 
+    /**
+     * Identificador do objeto
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Nome do cliente
+     */
     private String nome;
+    
+    /**
+     * Email de contato
+     */
     private String email;
 }
