@@ -1,6 +1,9 @@
 package com.example.atendimento.atendimento;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.example.atendimento.model.Cliente;
 
@@ -15,34 +18,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorld {
+    Long lastId = 0L;
+    Map<Long, Cliente> dados = new HashMap<>();
     
     @GetMapping(value = "clientes")
-    public List<Cliente> consultarCliente(@RequestParam String sort) {
-        return List.of(
-            new Cliente(1L, "Luiz", "luizgustavofcsg@hotmail.com"), 
-            new Cliente(2L, sort, "luizgustavofcsg@gmail.com")
-        );
+    public List<Cliente> consultarCliente() {
+        return new ArrayList<>(dados.values());
     }
 
     @GetMapping("clientes/{id}")
     public Cliente clienteByID(@PathVariable long id) {
-        return new Cliente(id, "luiz", "luis@asdfasd.com");
+        return dados.get(id);
     }
 
     @PostMapping(value = "clientes")
     public Cliente incluirCliente(@RequestBody Cliente body) {
-        body.setId(1L);
+        body.setId(++lastId);
+        dados.put(body.getId(), body);
         return body;
     }
 
     @PutMapping("clientes/{id}")
     public Cliente atualizarCliente(@RequestBody Cliente body, @PathVariable long id) {
-        body.setId(id);
+        dados.put(id, body);
         return body;
     }
 
     @DeleteMapping("clientes/{id}")
     public String removerCliente(@PathVariable long id) {
+        dados.remove(id);
         return "registro " + id + " apagado";
     }
 }
