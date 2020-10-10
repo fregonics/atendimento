@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.example.atendimento.model.Cliente;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +33,16 @@ public class HelloWorld {
     public Cliente incluirCliente(@RequestBody Cliente body) {
         body.setId(1L);
         return body;
+    }
+
+    @PutMapping("clientes/{id}")
+    public Cliente atualizarCliente(@RequestBody Cliente body, @PathVariable long id) {
+        body.setId(id);
+        return body;
+    }
+
+    @DeleteMapping("clientes/{id}")
+    public String removerCliente(@PathVariable long id) {
+        return "registro " + id + " apagado";
     }
 }
