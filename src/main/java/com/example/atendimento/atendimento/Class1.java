@@ -1,5 +1,8 @@
 package com.example.atendimento.atendimento;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Class1 {
     
     Class2 c2;

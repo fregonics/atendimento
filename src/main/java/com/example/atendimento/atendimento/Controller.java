@@ -9,8 +9,8 @@ public class Controller {
     Class1 c1;
     ClasseInjetavel ci;
 
-    public Controller(ClasseInjetavel ci) {
-        this.c1 = new Class1(new Class2(new Class3()));
+    public Controller(ClasseInjetavel ci, Class1 c1) {
+        this.c1 = c1;
         this.ci = ci;
     }
 
