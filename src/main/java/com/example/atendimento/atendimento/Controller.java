@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     Class1 c1;
+    ClasseInjetavel ci;
 
-    public Controller() {
+    public Controller(ClasseInjetavel ci) {
         this.c1 = new Class1(new Class2(new Class3()));
-
+        this.ci = ci;
     }
 
     @GetMapping
     public String test() {
-        return c1.process() + "\n";
+        return c1.process() + "\n" + ci.process();
     }
 }
