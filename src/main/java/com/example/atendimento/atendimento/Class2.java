@@ -3,7 +3,7 @@ package com.example.atendimento.atendimento;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Class2 {
+public class Class2 implements Interface2 {
     
     Class3 c3;
 

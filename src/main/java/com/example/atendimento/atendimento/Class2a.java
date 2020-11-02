@@ -1,18 +1,14 @@
 package com.example.atendimento.atendimento;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Class1 {
+@Primary
+public class Class2a implements Interface2{
     
-    Interface2 c2;
-
-    public Class1(Interface2 c2) {
-        this.c2 = c2;
-    }
-
     public String process() {
-        return "c1 - " + c2.process();
+        return "c2a";
     }
 
 }
