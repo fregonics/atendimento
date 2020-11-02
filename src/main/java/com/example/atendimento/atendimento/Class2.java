@@ -1,8 +1,10 @@
 package com.example.atendimento.atendimento;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class Class2 implements Interface2 {
     
     Class3 c3;
